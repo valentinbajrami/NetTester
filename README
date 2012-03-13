@@ -1,2 +1,8 @@
 # File  : NetTester.sh
 # Date  : 22:01:2012
+#
+#
+# Virtual Lans have been defined within two text files
+#
+# vlansDeventerSingel.txt   contains IP adressess of vlans found on a layer 3 switch
+# vlansDeventerBinnen.txt   contains IP adressess of vlans found on a layer 3 switch
