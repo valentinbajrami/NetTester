@@ -4,7 +4,7 @@ version() {
 	echo  
 	echo "############################"
 	echo "Versie:	V_3.0" 
-	echo "Auteur:	IJSSELSTREEK UNIVERSITY"
+	echo "Auteur:	Valentin Bajrami"
 	echo "Date:	27-01-2012"
 	echo "Script: 	Tests basic network functinality"
 	echo "############################"
