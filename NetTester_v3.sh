@@ -6,12 +6,12 @@ version() {
 	echo "Versie:	V_3.0" 
 	echo "Auteur:	IJSSELSTREEK UNIVERSITY"
 	echo "Date:	27-01-2012"
-	echo "Script: Het testen van de netwerkfunctionaliteit van IJSSELSTREEK UNIVERSITY"
+	echo "Script: 	Tests basic network functinality"
 	echo "############################"
 	echo
 }
 
-GATEWAY="192.168.0.2"
+GATEWAY="192.168.0.1"
 
 # ********************************************* Test reverse DNS ***************************************
 

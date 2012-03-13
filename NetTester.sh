@@ -6,7 +6,7 @@ version() {
 	echo "Versie:	V_2.0" 
 	echo "Auteur:	GamiX"
 	echo "Date:	05-12-2011"
-	echo "Script: Het testen van de netwerkfunctionaliteit"
+	echo "Script: Tests basic network functionality"
 	echo "############################"
 	echo
 }
