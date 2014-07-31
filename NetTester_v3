@@ -112,76 +112,69 @@ fi
 
 # ********************************************** Ping VLANS **********************************************
 
-ping_vlans_dev_singel(){
+ping_hosts_vlan_one(){
 echo
-echo "***     Ping alle VLAN's in het netwerk ***"
+echo "*** Ping all hosts ***"
 echo "--------------------------------------------"
 
 count1=0
 count2=0
-start=`date +"%d-%m-%Y-%T"`
+start=$(date +"%d-%m-%Y-%T")
 
-echo
 while read -r line
 do
 #PING=`ping -s 64 $line -c 1 | grep packet | awk '{print $(NF-2)}'`
 PING=`/bin/ping -s 64 $line -c 1 | grep packet | awk '{print $(NF-4)}'`
 
 if [[ "$PING" == "0%" ]]; then
-	count1=$((count1 + 1))
-echo $line" "UP" "	
+count1=$((count1 + 1))
+printf '%s\n' "$line UP" 
 else
-	count2=$((count2 + 1))
-echo $line" "DOWN" "	
+count2=$((count2 + 1))
+printf '%s\n\n' "$line DOWN"
 fi
-done < vlansDeventerSingel.txt
+done < hosts_vlan_one.txt
 
-end=`date +"%d-%m-%Y-%T"`
+end=$(date +"%d-%m-%Y-%T")
 
-echo
-echo Start:$start
-echo End**:$end
-echo
-echo $count1 vlans UP en $count2 vlans down
-
-echo
+printf '%s\n' "Start:$start"
+printf '%s\n\n' "End**:$end"
+printf '%s\n' "$count1 hosts UP and $count2 hosts down"
 
 }
+ping_hosts
 
-ping_vlans_dev_binnen(){
+ping_hosts(){
 echo
-echo "***     Ping alle VLAN's in het netwerk ***"
+echo "*** Ping all hosts ***"
 echo "--------------------------------------------"
 
 count1=0
 count2=0
-start=`date +"%d-%m-%Y-%T"`
+start=$(date +"%d-%m-%Y-%T")
 
-echo
 while read -r line
 do
+#PING=`ping -s 64 $line -c 1 | grep packet | awk '{print $(NF-2)}'`
 PING=`/bin/ping -s 64 $line -c 1 | grep packet | awk '{print $(NF-4)}'`
 
 if [[ "$PING" == "0%" ]]; then
-        count1=$((count1 + 1))
-echo $line" "UP" "      
+count1=$((count1 + 1))
+printf '%s\n' "$line UP" 
 else
-        count2=$((count2 + 1))
-echo $line" "DOWN" "    
+count2=$((count2 + 1))
+printf '%s\n\n' "$line DOWN"
 fi
-done < vlansDeventerBinnen.txt
+done < hosts_vlan_two.txt
 
-end=`date +"%d-%m-%Y-%T"`
+end=$(date +"%d-%m-%Y-%T")
 
-echo
-echo Start:$start
-echo End**:$end
-echo
-echo $count1 vlans UP en $count2 vlans down
-
-echo
+printf '%s\n' "Start:$start"
+printf '%s\n\n' "End**:$end"
+printf '%s\n' "$count1 hosts UP and $count2 hosts down"
 
 }
+ping_hosts
 
 
 ssh_func(){
