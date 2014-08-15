@@ -113,36 +113,35 @@ fi
 # ********************************************** Ping VLANS **********************************************
 
 ping_hosts_vlan_one(){
+
 echo
 echo "*** Ping all hosts ***"
 echo "--------------------------------------------"
-
 up=0
 down=0
-start=$(date +"%d-%m-%Y-%T")
+green=$(tput setaf 2)
+red=$(tput setaf 1)
+rst=$(tput sgr0)
 
+start=$(date +"%d-%m-%Y-%T")
 while read -r host
 do
-#pping=$(ping -s 64 $host -c 1 | awk '/packet/{print $(NF-2)}'` # Solaris
-pping=$(ping -s 64 $host -c 1 | awk '/packet/{print +$(NF-4)}'`
-
+#pping=$(ping -s 64 $host -c 1 | awk '/packet/{print $(NF-2)}') # Solaris
+pping=$(ping -s 64 $host -c 1 | awk '/packet/{print +$(NF-4)}')
 if [[ "$pping" == "0" ]]; then
-up=$((up + 1))
-printf '%s\n' "$host UP" 
+((up++))
+printf '%s\n' "$host ${green}UP${rst}"
 else
-down=$((down + 1))
-printf '%s\n' "$host DOWN"
+((down++))
+printf '%s\n' "$host ${red}DOWN${rst}"
 fi
 done < hosts_vlan_one.txt
-
 end=$(date +"%d-%m-%Y-%T")
-
 printf '%s\n' "Start:$start"
 printf '%s\n\n' "End**:$end"
 printf '%s\n' "$up hosts UP and $down hosts down"
-
 }
-ping_hosts
+ping_hosts_vlan_one
 
 ping_hosts(){
 echo
