@@ -127,11 +127,11 @@ do
 pping=$(ping -s 64 $host -c 1 | awk '/packet/{print +$(NF-4)}'`
 
 if [[ "$pping" == "0" ]]; then
-up+=1 #$((up + 1))
+up=$((up + 1))
 printf '%s\n' "$host UP" 
 else
-down+=1  #$((down + 1))
-printf '%s\n\n' "$host DOWN"
+down=$((down + 1))
+printf '%s\n' "$host DOWN"
 fi
 done < hosts_vlan_one.txt
 
